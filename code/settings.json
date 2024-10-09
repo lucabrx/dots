@@ -1,0 +1,101 @@
+{
+  "workbench.colorTheme": "GitHub Dark Dimmed",
+  "workbench.activityBar.location": "hidden",
+  "workbench.statusBar.visible": false,
+  "window.menuBarVisibility": "toggle",
+  "editor.minimap.enabled": false,
+  "workbench.sideBar.location": "left",
+  "editor.copyWithSyntaxHighlighting": false,
+  "diffEditor.ignoreTrimWhitespace": false,
+  "editor.emptySelectionClipboard": false,
+  "workbench.editor.enablePreview": false,
+  "window.newWindowDimensions": "inherit",
+  "editor.multiCursorModifier": "ctrlCmd",
+  "files.trimTrailingWhitespace": true,
+  "diffEditor.renderSideBySide": false,
+  "editor.snippetSuggestions": "top",
+  "editor.detectIndentation": false,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "workbench.editor.showTabs": "multiple",
+  "editor.guides.indentation": true,
+  "editor.guides.bracketPairs": true,
+  "editor.guides.highlightActiveIndentation": true,
+  "editor.guides.bracketPairsHorizontal": "active",
+  "editor.indentSize": "tabSize",
+  "editor.unicodeHighlight.invisibleCharacters": false,
+  "editor.renderWhitespace": "none",
+  "editor.fontFamily": "Hurmit Nerd Font",
+  "editor.fontSize": 14,
+  "editor.fontWeight": "400",
+  "workbench.iconTheme": "material-icon-theme",
+  "go.useLanguageServer": true,
+  "go.toolsManagement.autoUpdate": true,
+  "go.formatTool": "goimports",
+  "go.lintTool": "golangci-lint",
+  "go.lintOnSave": "package",
+  "go.vetOnSave": "package",
+  "go.testOnSave": false,
+  "go.coverOnSave": false,
+  "[go]": {
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": "always"
+    },
+    "editor.defaultFormatter": "golang.go"
+  },
+  "gopls": {
+    "usePlaceholders": true,
+    "completionDocumentation": true,
+    "watchFileChanges": true,
+    "deepCompletion": true
+  },
+
+  // Prettier and ESLint configuration
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "always"
+  },
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "es5",
+  "prettier.tabWidth": 2,
+  "prettier.semi": true,
+
+  // TypeScript configuration
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // JavaScript configuration
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // React (JSX) configuration
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // Svelte configuration
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode",
+    "editor.formatOnSave": true
+  },
+
+  // Enable ESLint for .js, .jsx, .ts, .tsx, and .svelte files
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "svelte"
+  ]
+}
