@@ -22,7 +22,8 @@ export ZSH="$HOME/.oh-my-zsh"
 export GOPATH=$HOME/go
 export GOBIN=$GOPATH/bin
 export PATH=$PATH:$GOBIN
-export PATH="/path/to/vscode/bin:$PATH"
+export JAVA_HOME=/usr/lib/jvm/java-21-openjdk
+export PATH=$JAVA_HOME/bin:$PATH
 
 # ==============================
 # Zinit Installation and Plugins
