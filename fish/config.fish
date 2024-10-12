@@ -1,5 +1,3 @@
-# Fish shell configuration
-
 # Environment Variables
 set -gx GOPATH $HOME/go
 set -gx GOBIN $GOPATH/bin
@@ -18,13 +16,30 @@ set fish_color_error red
 set fish_color_normal normal
 
 # Aliases
-alias ls='ls --color=auto'
-alias ll='ls -lah'
+alias ls='eza --group-directories-first --icons'
+alias ll='eza -lah --group-directories-first --icons'
+alias lt='eza -laT --group-directories-first --icons'  # Tree listing
+alias lg='eza -lah --group-directories-first --icons --git'  # Show Git status
+
 alias vim='nvim'
 alias c='clear'
-alias update='sudo pacman -Syu'
-alias weather='curl wttr.in'
 alias gitlog='git log --oneline --graph --decorate --all'
+alias ports='netstat -tulanp'
+alias fishconfig='vim ~/.config/fish/config.fish'
+alias reloadfish='source ~/.config/fish/config.fish'
+alias h='history'
+alias hg='history | grep'
+
+# Docker aliases
+alias d='docker'
+alias dc='docker compose'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias dps='docker ps'
+
+# SSH aliases
+alias vemeet-ssh='ssh -i ~/.ssh/vemeet luka@vemeet.me'
+alias valu-ssh='ssh -i ~/.ssh/netcup-else root@valu-media.com'
 
 # Fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
@@ -38,7 +53,7 @@ set __fish_git_prompt_color_upstream_behind red
 # Prompt
 function fish_prompt
     set_color brblue
-    echo -n "🐠 "
+    echo -n "🐧"
     set_color normal
     echo -n (prompt_pwd)
     set_color yellow
@@ -68,3 +83,12 @@ set_color cyan
 echo "Welcome back, $USER!"
 set_color normal
 echo ""
+
+
+function cd
+    if count $argv > /dev/null
+        z $argv
+    else
+        z
+    end
+end
