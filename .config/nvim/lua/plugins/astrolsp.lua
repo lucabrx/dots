@@ -1,41 +1,28 @@
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
-    -- Configuration table of features provided by AstroLSP
+    automatic_installation = true,
     features = {
-      codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = true, -- enable inlay hints for Rust
-      semantic_tokens = true, -- enable/disable semantic token highlighting
+      codelens = true,
+      semantic_tokens = true,
     },
     -- customize lsp formatting options
     formatting = {
-      -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = true,
         allow_filetypes = {
-          "rust", -- enable format on save for Rust
+          "rust",
+          "go",
         },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
-        },
+        ignore_filetypes = {},
       },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- "rust_analyzer", -- Uncomment this line if you want to use rustfmt separately
-      },
-      timeout_ms = 1000, -- default format timeout
+      disabled = {},
+      timeout_ms = 1000,
     },
-    -- enable servers that you already have installed without mason
-    servers = {
-      "rust_analyzer", -- Add rust_analyzer here
-    },
-    -- customize language server configuration options passed to `lspconfig`
-    ---@diagnostic disable: missing-fields
     config = {
       rust_analyzer = {
         settings = {
@@ -52,30 +39,67 @@ return {
           },
         },
       },
+      gopls = {
+        settings = {
+          gopls = {
+            analyses = {
+              unusedparams = true,
+              shadow = true,
+              fieldalignment = true,
+              nilness = true,
+              unusedwrite = true,
+              useany = true,
+            },
+            staticcheck = true,
+            gofumpt = true,
+            usePlaceholders = true,
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+            -- Enable auto-imports
+            importShortcut = "Definition",
+            completeUnimported = true,
+            semanticTokens = true,
+          },
+        },
+      },
     },
     -- customize how language servers are attached
     handlers = {
-      -- You can add a custom handler for rust_analyzer if needed
-      -- rust_analyzer = function(_, opts) require("lspconfig").rust_analyzer.setup(opts) end
+      gopls = function(_, opts)
+        require("lspconfig").gopls.setup(opts)
+      end,
     },
     -- Configure buffer local auto commands to add when attaching a language server
     autocmds = {
-      -- Keep existing autocmds and add Rust-specific ones if needed
+      -- Add Go-specific autocmds
+      go = {
+        { event = "BufWritePre", command = "lua vim.lsp.buf.format()" },
+        { event = "BufWritePre", command = "lua require('go.format').goimport()" },
+      },
     },
     -- mappings to be set up on attaching of a language server
     mappings = {
       n = {
-        -- Keep existing mappings
-        -- Add Rust-specific mappings here if needed
+        -- Add Go-specific mappings
+        ["<leader>gtj"] = { "<cmd>GoAddTag json<cr>", desc = "Add json struct tags" },
+        ["<leader>gty"] = { "<cmd>GoAddTag yaml<cr>", desc = "Add yaml struct tags" },
+        ["<leader>gt-"] = { "<cmd>GoRemoveTags<cr>", desc = "Remove all struct tags" },
+        ["<leader>gif"] = { "<cmd>GoIfErr<cr>", desc = "Add if err != nil" },
       },
     },
     -- A custom `on_attach` function to be run after the default `on_attach` function
     on_attach = function(client, bufnr)
-      -- Add Rust-specific on_attach logic here if needed
     end,
-    -- Disable LSP logging
     logging = {
       enabled = false,
+      level = "warn",
     },
   },
 }
