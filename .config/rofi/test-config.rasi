@@ -1,0 +1,13 @@
+
+configuration {
+    modi: "drun,run,window";
+    kb-row-up: "Up,Control+k";
+    kb-row-down: "Down,Control+j";
+    kb-accept-entry: "Return,KP_Enter";
+    kb-remove-to-eol: "";
+    kb-mode-next: "Tab";
+    kb-mode-previous: "ISO_Left_Tab";
+    kb-remove-char-back: "BackSpace";
+}
+@theme "~/.config/rofi/launchers/type-1/style-7.rasi"
+
