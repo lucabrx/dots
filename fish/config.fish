@@ -1,94 +1,93 @@
-"$schema" = 'https://starship.rs/config-schema.json'
+# Environment Variables
+set -gx GOPATH $HOME/go
+set -gx GOBIN $GOPATH/bin
+set -gx PATH $PATH $GOBIN
+set -gx JAVA_HOME /usr/lib/jvm/java-21-openjdk
+set -gx PATH $JAVA_HOME/bin $PATH
+set -gx NVM_DIR "$HOME/.nvm"
+set -gx PATH "$HOME/.local/bin" $PATH
+set -gx ANDROID_HOME $HOME/Android/Sdk
+set -gx PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
 
-format = """
-$username\
-$os\
-$directory\
-$git_branch\
-$git_status\
-$golang\
-$memory_usage\
-$line_break\
-$time\
-$character"""
+# Colors
+set fish_color_command green
+set fish_color_param normal
+set fish_color_error red
+set fish_color_normal normal
 
-add_newline = true
+# Aliases
+alias ls='eza --group-directories-first --icons'
+alias ll='eza -lah --group-directories-first --icons'
+alias lt='eza -laT --group-directories-first --icons'  # Tree listing
+alias lg='eza -lah --group-directories-first --icons --git'  # Show Git status
 
-[character]
-success_symbol = "[➜](bold green)"
-error_symbol = "[✗](bold red)"
+alias vim='nvim'
+alias c='clear'
+alias gitlog='git log --oneline --graph --decorate --all'
+alias ports='netstat -tulanp'
+alias fishconfig='vim ~/.config/fish/config.fish'
+alias reloadfish='source ~/.config/fish/config.fish'
+alias h='history'
+alias hg='history | grep'
 
-[directory]
-style = "blue bold"
-truncation_length = 5
-truncate_to_repo = false
-format = "[$path]($style) "
+# Docker aliases
+alias d='docker'
+alias dc='docker compose'
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
+alias dps='docker ps'
 
-[git_branch]
-symbol = "🌱 "
-style = "bold purple"
-format = "on [$symbol$branch]($style) "
+# SSH aliases
+alias vemeet-ssh='ssh -i ~/.ssh/vemeet luka@vemeet.me'
+alias valu-ssh='ssh -i ~/.ssh/netcup-else root@valu-media.com'
 
-[git_status]
-style = "bold yellow"
-format = '[$all_status$ahead_behind]($style) '
+# Fish git prompt
+set __fish_git_prompt_showdirtystate 'yes'
+set __fish_git_prompt_showstashstate 'yes'
+set __fish_git_prompt_showuntrackedfiles 'yes'
+set __fish_git_prompt_showupstream 'yes'
+set __fish_git_prompt_color_branch yellow
+set __fish_git_prompt_color_upstream_ahead green
+set __fish_git_prompt_color_upstream_behind red
 
-[memory_usage]
-disabled = false
-threshold = -1
-symbol = "🐏 "
-style = "bold dimmed green"
-format = "via $symbol[${ram}( | ${swap})]($style) "
+# Prompt
+function fish_prompt
+    set_color brblue
+    echo -n "🐧"
+    set_color normal
+    echo -n (prompt_pwd)
+    set_color yellow
+    printf '%s ' (__fish_git_prompt)
+    set_color normal
+    echo -n '> '
+end
 
-[time]
-disabled = false
-format = "[$time]($style) "
-time_format = "%H:%M:%S"
-style = "bold blue"
+# FZF
+set -gx FZF_DEFAULT_COMMAND 'fd --type file --follow --hidden --exclude .git'
+set -gx FZF_CTRL_T_COMMAND "$FZF_DEFAULT_COMMAND"
 
-[username]
-style_user = "white bold"
-format = "[$user]($style) "
-show_always = true
+# Zoxide
+zoxide init fish | source
 
-[os]
-format = "[$symbol](bold white) "
-disabled = false
+starship init fish | source
 
-[os.symbols]
-Alpine = "🏔️ "
-Amazon = "🙂 "
-Android = "🤖 "
-Arch = "🎗️ "
-CentOS = "💠 "
-Debian = "🍥 "
-DragonFly = "🐉 "
-Emscripten = "🔗 "
-EndeavourOS = "🚀 "
-Fedora = "🎩 "
-FreeBSD = "😈 "
-Garuda = "🦅 "
-Gentoo = "🗜️ "
-HardenedBSD = "🛡️ "
-Illumos = "🐦 "
-Linux = "🐧"
-Macos = "🍎 "
-Manjaro = "🥭 "
-Mariner = "🌊 "
-MidnightBSD = "🌘 "
-Mint = "🌿 "
-NetBSD = "🚩 "
-NixOS = "❄️ "
-OpenBSD = "🐡 "
-openSUSE = "🦎 "
-OracleLinux = "🦴 "
-Pop = "🍭 "
-Raspbian = "🍓 "
-Redhat = "🎩 "
-RedHatEnterprise = "🎩 "
-Redox = "🧪 "
-Solus = "⛵ "
-SUSE = "🦎 "
-Ubuntu = "🎯 "
-Unknown = "❓ "
-Windows = "🪟 "
+# SSH agent
+eval (ssh-agent -c)
+ssh-add ~/.ssh/id_ed25519
+
+# Print welcome message
+fastfetch
+echo ""
+set_color cyan
+echo "Welcome back, $USER!"
+set_color normal
+echo ""
+
+
+function cd
+    if count $argv > /dev/null
+        z $argv
+    else
+        z
+    end
+end
