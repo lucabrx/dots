@@ -1,0 +1,110 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "assistant": {
+    "default_model": {
+      "provider": "ollama",
+      "model": "llama2:latest"
+    },
+    "version": "2"
+  },
+  "vim_mode": true,
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "ui_font_family": "Hurmit Nerd Font",
+  "buffer_font_family": "Hurmit Nerd Font",
+  "tab_bar": {
+    "show_nav_history_buttons": false
+  },
+  "tab_size": 2,
+  "format_on_save": "on",
+  "inlay_hints": {
+    "enabled": true,
+    "font_family": "Consolas"
+  },
+  "soft_wrap": "preferred_line_length",
+  "indent_guides": {
+    "coloring": "indent_aware"
+  },
+  "git_status": true,
+  "theme": {
+    "mode": "system",
+    "light": "Github Dark Dimmed",
+    "dark": "One Dark"
+  },
+
+  // Langs
+  "Go": {
+    "code_actions_on_format": {
+      "source.organizeImports": true
+    }
+  },
+  "Rust": {
+    "tab_size": 2
+  },
+  "TSX": {
+    "formatter": {
+      "external": {
+        "command": "prettier",
+        "arguments": ["--stdin-filepath", "{buffer_path}", "--tab-width", "2"]
+      }
+    },
+    "code_actions_on_format": {
+      "source.organizeImports": true,
+      "source.fixAll.eslint": true
+    }
+  },
+  "JavaScript": {
+    "formatter": {
+      "external": {
+        "command": "prettier",
+        "arguments": ["--stdin-filepath", "{buffer_path}", "--tab-width", "2"]
+      }
+    },
+    "code_actions_on_format": {
+      "source.fixAll.eslint": true
+    }
+  },
+  "TypeScript": {
+    "formatter": {
+      "external": {
+        "command": "prettier",
+        "arguments": ["--stdin-filepath", "{buffer_path}", "--tab-width", "2"]
+      }
+    },
+    "code_actions_on_format": {
+      "source.organizeImports": true,
+      "source.fixAll.eslint": true
+    }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "checkOnSave": {
+          // rust-analyzer.check.command (default: "check")
+          // "command": "clippy"
+        }
+      }
+    },
+    "eslint": {
+      "settings": {
+        "codeActionOnSave": {
+          "rules": ["import/order"]
+        }
+      }
+    }
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+
+  // bindings
+  //
+}
