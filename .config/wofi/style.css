@@ -1,0 +1,99 @@
+window {
+    margin: 0px;
+    border: 3px solid #cba6f7;
+    background-color: rgba(30, 30, 46, 0.95);
+    border-radius: 16px;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+
+#input {
+    padding: 8px 12px;
+    margin: 8px 12px;
+    border: none;
+    color: #cdd6f4;
+    font-weight: bold;
+    background-color: rgba(49, 50, 68, 0.7);
+    outline: none;
+    border-radius: 12px;
+    margin-bottom: 6px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+#input:focus {
+    border: 2px solid #cba6f7;
+    margin-bottom: 4px;
+}
+
+#inner-box {
+    margin: 8px;
+    border: none;
+    color: #cdd6f4;
+    font-weight: bold;
+    background-color: transparent;
+    border-radius: 12px;
+}
+
+#outer-box {
+    margin: 0;
+    border: none;
+    border-radius: 12px;
+    background-color: transparent;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+#scroll {
+    margin: 6px;
+    border: none;
+    border-radius: 12px;
+    margin-bottom: 6px;
+}
+
+#img {
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+#img:selected {
+    background-color: #89b4fa;
+    border-radius: 12px;
+}
+
+#text {
+    color: #cdd6f4;
+    margin: 0 8px;
+    padding: 4px 8px;
+    border: none;
+    border-radius: 12px;
+}
+
+#text:selected {
+    color: #1e1e2e;
+    font-weight: bold;
+    background-color: #89b4fa;
+}
+
+#entry {
+    padding: 6px;
+    margin: 2px 8px;
+    border-radius: 12px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+}
+
+#entry:selected {
+    background-color: #89b4fa;
+    padding: 8px;
+    margin: 0 4px;
+}
+
+/* Hover effect for entries */
+#entry:hover {
+    background-color: rgba(137, 180, 250, 0.2);
+}
+
+/* Add subtle animation for selected entry */
+#entry:selected {
+    transition: all 0.2s ease;
+    background: linear-gradient(90deg, #89b4fa 0%, #cba6f7 100%);
+}
