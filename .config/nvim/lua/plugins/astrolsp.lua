@@ -17,6 +17,8 @@ return {
         allow_filetypes = {
           "rust",
           "go",
+          "svelte",
+          "move"
         },
         ignore_filetypes = {},
       },
@@ -24,6 +26,26 @@ return {
       timeout_ms = 1000,
     },
     config = {
+      svelte = {
+        settings = {
+          svelte = {
+            plugin = {
+              html = {
+                completions = {
+                  enable = true,
+                  emmet = true,
+                },
+              },
+              svelte = {
+                defaultScriptLanguage = "typescript",
+                diagnostics = {
+                  enable = true,
+                },
+              },
+            },
+          },
+        }
+      },
       rust_analyzer = {
         settings = {
           ["rust-analyzer"] = {
@@ -39,6 +61,22 @@ return {
           },
         },
       },
+      move_analyzer = {
+        settings = {
+          ["move-analyzer"] = {
+            checkOnSave = {
+              command = "clippy",
+            },
+            cargo = {
+              allFeatures = true,
+            },
+            procMacro = {
+              enable = true,
+            },
+          },
+        },
+      },
+
       gopls = {
         settings = {
           gopls = {

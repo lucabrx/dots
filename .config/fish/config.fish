@@ -9,6 +9,7 @@ set -gx NVM_DIR "$HOME/.nvm"
 set -gx PATH "$HOME/.local/bin" $PATH
 set -gx ANDROID_HOME $HOME/Android/Sdk
 set -gx PATH $PATH $ANDROID_HOME/tools $ANDROID_HOME/platform-tools
+set -gx PATH "$HOME/.local/share/solana/install/active_release/bin:$PATH"
 
 # Colors
 set fish_color_command green
@@ -47,6 +48,15 @@ alias hpa='time http PATCH'
 # SSH aliases
 alias vemeet-ssh='ssh -i ~/.ssh/vemeet luka@vemeet.me'
 alias valu-ssh='ssh -i ~/.ssh/netcup-else root@valu-media.com'
+
+## asus 
+alias pq='asusctl profile -P quiet'
+alias pp='asusctl profile -P performance'
+alias pb='asusctl profile -P balanced'
+alias pc='asusctl profile -p'
+
+# because of hyprland ( if using 1.25)
+# alias code='code -enable-features=WaylandWindowDecorations -ozone-platform-hint=auto '
 
 # Fish git prompt
 set __fish_git_prompt_showdirtystate 'yes'
@@ -100,10 +110,4 @@ function cd
 end
 
 
-function nvm
-    bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
-end
-
-set -x NVM_DIR ~/.nvm
-nvm use default --silent
 
