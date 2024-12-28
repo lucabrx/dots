@@ -1,0 +1,15 @@
+term = xterm-256color
+
+font-family = "Hurmit Nerd Font"
+font-size = "17"
+font-thicken = true
+theme = lovelace
+
+background-opacity = 0.8
+background-blur-radius = 20
+
+cursor-style = bar
+cursor-style-blink = true 
+initial-command = tmux
+window-decoration = false 
+confirm-close-surface = false 
