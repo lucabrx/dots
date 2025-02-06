@@ -1,314 +1,159 @@
 * {
-  /* `otf-font-awesome` is required to be installed for icons */
-  font-family: "Hurmit Nerd Font";
-  font-size: 14px;
-  font-weight: 900;
-  margin: 0;
+  font-family: "JetBrainsMono Nerd Font", monospace;
+  font-size: 13px;
+  font-weight: 700;
   padding: 0;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-}
-
-/* Reset all styles */
-* {
   border: none;
-  border-radius: 3px;
-  min-height: 0;
-  margin: 0.2em 0.3em 0.2em 0.3em;
+  border-radius: 0;
 }
 
-/* The whole bar */
 #waybar {
-  background-color: rgba(30, 30, 30, 0.85);
-  color: #ffffff;
-  transition-property: background-color;
-  transition-duration: 0.5s;
-  margin: 8px 8px;
-  border: 2px solid rgba(100, 100, 100, 0.2);
+  background: linear-gradient(
+    160deg,
+    rgba(10, 18, 25, 0.95) 3%,
+    rgba(14, 22, 30, 0.97) 97%
+  );
+  color: #e0e0e0;
+  box-shadow: 0 0 15px 2px rgba(0, 255, 255, 0.1);
+  margin: 10px;
+  padding: 0 20px;
 }
 
-window#waybar.hidden {
-  opacity: 0.2;
+/* ================== WORKSPACES ================== */
+#workspaces {
+  margin: 0 8px;
+  background: rgba(0, 255, 255, 0.03);
+  border-radius: 6px;
+  padding: 2px;
 }
 
 #workspaces button {
-  padding: 0 5px;
-  color: #7984a4;
-  background-color: transparent;
-  /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
-  /* Avoid rounded borders under each workspace name */
-  border: none;
-  border-radius: 6px;
+  color: rgba(224, 224, 224, 0.6);
+  padding: 0 14px;
+  margin: 0 3px;
+  background: rgba(20, 30, 22, 0.4);
+  border-radius: 5px;
   transition: all 0.3s ease;
 }
 
-#workspaces button.focused {
-  background-color: transparent;
-}
-
-#workspace button.hover {
-  background-color: rgba(100, 100, 100, 0.1);
-  box-shadow: inherit;
-}
-
 #workspaces button.active {
-  color: #fff;
-  background-color: rgba(100, 100, 100, 0.2);
+  color: #00ffff;
+  background: linear-gradient(
+    145deg,
+    rgba(0, 255, 255, 0.15),
+    rgba(107, 141, 214, 0.05)
+  );
+  box-shadow: 0 0 6px rgba(0, 255, 255, 0.3);
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  animation: alien-alert 1s infinite alternate;
 }
 
-#window {
-  /* border-radius: 20px; */
-  /* padding-left: 10px; */
-  /* padding-right: 10px; */
-  color: #64727d;
-}
-
-/* Each module */
-#clock,
-#battery,
-#cpu,
-#memory,
-#disk,
-#temperature,
-#backlight,
-#network,
-#pulseaudio,
-#wireplumber,
-#custom-media,
-#custom-screenshot_t,
-#tray,
-#mode,
-#idle_inhibitor,
-#mpd,
-#bluetooth,
-#custom-hyprPicker,
-#custom-power-menu,
-#custom-spotify,
-#custom-weather,
-#custom-weather.severe,
-#custom-weather.sunnyDay,
-#custom-weather.clearNight,
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight,
-#custom-weather.rainyDay,
-#custom-weather.rainyNight,
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight,
-#custom-weather.default {
-  padding: 0px 12px;
-  margin: 3px 2px;
-  color: #e5e5e5;
-  border-radius: 12px;
-  background-color: rgba(40, 40, 40, 0.7);
-  /* Semi-transparent module background */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  /* Subtle shadow */
-}
-
-#window,
-#workspaces {
-  border-radius: 12px;
-  padding: 0px 12px;
-  background-color: rgba(40, 40, 40, 0.7);
-  margin: 3px 2px;
-}
-
-#cpu {
-  color: #fb958b;
-  background-color: #1e1e1e;
-}
-
-#memory {
-  color: #ebcb8b;
-  background-color: #1e1e1e;
-}
-
-#custom-power-menu {
-  border-radius: 9.5px;
-  background-color: #1b242b;
-  border-radius: 7.5px;
-  padding: 0 0px;
-}
-
-#custom-launcher {
-  background-color: #1b242b;
-  color: #6a92d7;
-  border-radius: 7.5px;
-  padding: 0 0px;
-}
-
-#custom-weather.severe {
-  color: #eb937d;
-}
-
-#custom-weather.sunnyDay {
-  color: #c2ca76;
-}
-
-#custom-weather.clearNight {
-  color: #cad3f5;
-}
-
-#custom-weather.cloudyFoggyDay,
-#custom-weather.cloudyFoggyNight {
-  color: #c2ddda;
-}
-
-#custom-weather.rainyDay,
-#custom-weather.rainyNight {
-  color: #5aaca5;
-}
-
-#custom-weather.showyIcyDay,
-#custom-weather.snowyIcyNight {
-  color: #d6e7e5;
-}
-
-#custom-weather.default {
-  color: #dbd9d8;
-}
-
-/* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > #workspaces {
-  margin-left: 0;
-}
-
-/* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > #workspaces {
-  margin-right: 0;
-}
-
-#pulseaudio {
-  color: #7d9bba;
-}
-
-#backlight {
-  /* color: #EBCB8B; */
-  color: #8fbcbb;
-}
-
-#clock {
-  color: #c8d2e0;
-  /* background-color: #14141e; */
-}
-
-#battery {
-  color: #c0caf5;
-  /* background-color: #90b1b1; */
-}
-
-#battery.charging,
-#battery.full,
-#battery.plugged {
-  color: #26a65b;
-  /* background-color: #26a65b; */
-}
-
-@keyframes blink {
+@keyframes alien-alert {
+  from {
+    background-color: rgba(255, 26, 26, 0.3);
+  }
   to {
-    background-color: rgba(30, 34, 42, 0.5);
-    color: #abb2bf;
+    background-color: #ff165d;
   }
 }
 
-#battery.critical:not(.charging) {
-  color: #f53c3c;
-  animation-name: blink;
-  animation-duration: 0.5s;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
+/* ================== SYSTEM MODULES ================== */
+.module {
+  padding: 0 16px;
+  margin: 0 6px;
+  background: rgba(15, 23, 30, 0.4);
+  border-left: 2px solid #00ffff;
+  opacity: 0.6;
+  border-radius: 6px;
 }
 
-label:focus {
-  background-color: #000000;
+#cpu {
+  color: #00ffff;
+  min-width: 68px;
 }
 
-#disk {
-  background-color: #964b00;
-}
-
-#bluetooth {
-  color: #707d9d;
-}
-
-#bluetooth.disconnected {
-  color: #f53c3c;
-}
-
-#network {
-  color: #b48ead;
-}
-
-#network.disconnected {
-  color: #f53c3c;
-}
-
-#custom-media {
-  background-color: #66cc99;
-  color: #2a5c45;
-  min-width: 100px;
-}
-
-#custom-media.custom-spotify {
-  background-color: #66cc99;
-}
-
-#custom-media.custom-vlc {
-  background-color: #ffa000;
+#memory {
+  color: #6b8dd6;
+  border-left: 2px solid #6b8dd6;
 }
 
 #temperature {
-  background-color: #f0932b;
+  color: #e0e0e0;
+  border-left: 2px solid #e0e0e0;
+  padding-right: 16px;
 }
 
 #temperature.critical {
-  background-color: #eb4d4b;
+  animation: heat-alert 0.8s infinite;
 }
 
-#tray > .passive {
-  -gtk-icon-effect: dim;
+@keyframes heat-alert {
+  50% {
+    color: #ff165d;
+  }
 }
 
-#tray > .needs-attention {
-  -gtk-icon-effect: highlight;
-  background-color: #eb4d4b;
+/* ================== POWER SYSTEM ================== */
+#battery {
+  color: #00ff9f;
+  padding-right: 18px;
+  border-left: 2px solid #00ff9f;
 }
 
-#idle_inhibitor {
-  background-color: #2d3436;
+#battery.charging {
+  animation: alien-charge 1.2s infinite;
 }
 
-#idle_inhibitor.activated {
-  background-color: #ecf0f1;
-  color: #2d3436;
+@keyframes alien-charge {
+  50% {
+    box-shadow: 0 0 8px #00ff9f;
+  }
 }
 
-#language {
-  background: #00b093;
-  color: #740864;
-  padding: 0 0px;
-  margin: 0 5px;
-  min-width: 16px;
+/* ================== CLOCK ================== */
+#clock {
+  font-size: 14px;
+  padding: 0 22px;
+  color: #e0e0e0;
+  background: rgba(0, 255, 255, 0.05);
+  border-radius: 6px;
+  margin: 0 8px;
+  letter-spacing: 1px;
 }
 
-#keyboard-state {
-  background: #97e1ad;
-  color: #000000;
-  padding: 0 0px;
-  margin: 0 5px;
-  min-width: 16px;
+/* ================== NETWORK ================== */
+#network {
+  color: #00ffff;
+  padding-right: 20px;
+  border-left: 2px solid #00ffff;
 }
 
-#keyboard-state > label {
-  padding: 0 0px;
+#network.disconnected {
+  animation: alien-disconnect 0.7s infinite;
 }
 
-#keyboard-state > label.locked {
-  background: rgba(0, 0, 0, 0.2);
+@keyframes alien-disconnect {
+  50% {
+    color: #ff165d;
+  }
+}
+
+/* ================== TRAY ================== */
+#tray {
+  background: rgba(15, 23, 30, 0.5);
+  border-radius: 6px;
+  padding: 0 14px;
+  margin: 0 8px;
+  border-left: 2px solid rgba(0, 255, 255, 0.2);
+}
+
+/* ================== TOOLTIP ================== */
+tooltip {
+  background: rgba(10, 18, 25, 0.95);
+  border: 1px solid #00ffff;
+  color: #e0e0e0;
+  border-radius: 6px;
+  padding: 8px;
 }
