@@ -1,99 +1,95 @@
 window {
-    margin: 0px;
-    border: 3px solid #cba6f7;
-    background-color: rgba(30, 30, 46, 0.95);
-    border-radius: 16px;
-    font-family: "JetBrainsMono Nerd Font";
-    font-size: 14px;
+  margin: 0px;
+  border: 2px solid #00ffff;
+  background-color: rgba(10, 18, 25, 0.95);
+  border-radius: 8px;
+  font-family: "JetBrainsMono Nerd Font";
+  font-size: 13px;
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.1);
 }
 
 #input {
-    padding: 8px 12px;
-    margin: 8px 12px;
-    border: none;
-    color: #cdd6f4;
-    font-weight: bold;
-    background-color: rgba(49, 50, 68, 0.7);
-    outline: none;
-    border-radius: 12px;
-    margin-bottom: 6px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  padding: 8px 16px;
+  margin: 12px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  color: #e0e0e0;
+  background-color: rgba(15, 23, 30, 0.6);
+  border-radius: 6px;
+  font-weight: 700;
+  box-shadow: inset 0 0 6px rgba(0, 255, 255, 0.1);
 }
 
 #input:focus {
-    border: 2px solid #cba6f7;
-    margin-bottom: 4px;
+  border-color: #00ff9f;
+  box-shadow: 0 0 8px rgba(0, 255, 159, 0.3);
 }
 
 #inner-box {
-    margin: 8px;
-    border: none;
-    color: #cdd6f4;
-    font-weight: bold;
-    background-color: transparent;
-    border-radius: 12px;
+  margin: 8px 12px;
+  background-color: transparent;
 }
 
 #outer-box {
-    margin: 0;
-    border: none;
-    border-radius: 12px;
-    background-color: transparent;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 18, 25, 0.95),
+    rgba(14, 22, 30, 0.97)
+  );
+  border-radius: 8px;
 }
 
 #scroll {
-    margin: 6px;
-    border: none;
-    border-radius: 12px;
-    margin-bottom: 6px;
+  margin: 8px;
+  border-radius: 6px;
 }
 
 #img {
-    margin-right: 10px;
-    border-radius: 8px;
-}
-
-#img:selected {
-    background-color: #89b4fa;
-    border-radius: 12px;
+  margin-right: 12px;
+  border-radius: 4px;
 }
 
 #text {
-    color: #cdd6f4;
-    margin: 0 8px;
-    padding: 4px 8px;
-    border: none;
-    border-radius: 12px;
-}
-
-#text:selected {
-    color: #1e1e2e;
-    font-weight: bold;
-    background-color: #89b4fa;
+  color: #e0e0e0;
+  margin: 4px 0;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: all 0.25s cubic-bezier(0.23, 1, 0.32, 1);
 }
 
 #entry {
-    padding: 6px;
-    margin: 2px 8px;
-    border-radius: 12px;
-    background-color: transparent;
-    transition: all 0.2s ease;
+  padding: 6px;
+  margin: 4px 0;
+  border-radius: 6px;
+  background-color: transparent;
 }
 
 #entry:selected {
-    background-color: #89b4fa;
-    padding: 8px;
-    margin: 0 4px;
+  background: linear-gradient(
+    to right,
+    rgba(0, 255, 255, 0.15),
+    rgba(0, 255, 159, 0.1)
+  );
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.2);
+  border: 1px solid #00ff9f;
 }
 
-/* Hover effect for entries */
+#text:selected {
+  color: #00ffff;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.3);
+}
+
 #entry:hover {
-    background-color: rgba(137, 180, 250, 0.2);
+  background-color: rgba(0, 255, 255, 0.08);
+  transform: translateX(4px);
 }
 
-/* Add subtle animation for selected entry */
-#entry:selected {
-    transition: all 0.2s ease;
-    background: linear-gradient(90deg, #89b4fa 0%, #cba6f7 100%);
+#entry:active {
+  background-color: rgba(0, 255, 159, 0.15);
+}
+
+/* Cybernetic Progress Bar */
+#progress {
+  background-color: #00ff9f;
+  border-color: #00ffff;
+  color: #0a1219;
 }
